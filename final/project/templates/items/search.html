@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+{% block body_content %}
+    <center>
+        {% if searched %}
+    <h1>hey,you searched for {{searched}}</h1>
+    
+    <br>
+    {% for item in itemss%}
+        {{item}}
+    {% endfor %}
+    
+    {% endif %}
+    </center>
+{% endblock %}
