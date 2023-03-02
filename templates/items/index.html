@@ -29,7 +29,7 @@ Item | INDEX
                     </tr>
                 </thead>
                 <tbody>
-                    {% for val in item_list %}
+                    {% for val in venues %}    <!--venues chai views ma pass vako and paginator ma 2 objects so now only shows 2 obj , item_list vako vaye all -->
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ val.title }}</td>
@@ -52,7 +52,7 @@ Item | INDEX
 <br>
 </br>
 {{venues}} <br>
-Has Previous:{{ venues.has_pervious }} <br>
+Has Previous:{{ venues.has_previous }} <br>
 Has Next:{{venues.has_next}} <br>
 Current Page:{{venues.number}} <br>
 Number of Pages:{{venues.paginator.num_pages}}
@@ -63,6 +63,8 @@ Number of Pages:{{venues.paginator.num_pages}}
 {% endif %}
 Page{{venues.number}} of {{venues.paginator.num_pages}}
 
-{% if %}
+{% if venues.has_next %}
+    <a href="?page={{ venues.next_page_number }}">NEXT</a>
+    <a href="?page={{venues.paginator.num_pages}}">LAST</a>
 {% endif %}
 {% endblock %}

@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ims/',include("project.urls")),
     path('api/', include('rest_framework.urls')),
+     path('authentication/', include("authentication.urls")),
 ]

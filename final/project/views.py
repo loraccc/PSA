@@ -26,19 +26,18 @@ class ItemApiView(APIView):
 def item_search(request):
     if request.method=="POST":
         searched=request.POST['searched']
-        itemss=Item.objects.filter(title__contains=searched)
+        itemss=Item.objects.filter(title__contains=searched) #title chai model ko item name 
 
-        
         return render(request,'items/search.html',{'searched':searched,'itemss':itemss})
 
 def item_index(request):
     if not request.session.has_key("session_email"):
         return redirect("users.login")
     item_list=Item.objects.all()
-    p=Paginator(Item.objects.all(),2)
+    p=Paginator(Item.objects.all(),2)  
     page=request.GET.get('page')
     venues=p.get_page(page)
-    context={"item_list":item_list,'venues':venues}
+    context={"item_list":item_list,"venues":venues}  # item_list pass garda all obj , venues pass garda chai defined no of objects
     return render(request, "items/index.html",context)
 
 def item_show(request, id):

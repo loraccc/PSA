@@ -16,7 +16,5 @@ urlpatterns = [
     path("users/register/", views.user_register, name="users.register"),
 
     path("api/items/", ItemApiView.as_view()),
-    
 
-    
 ]
